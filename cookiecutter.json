@@ -1,0 +1,7 @@
+{
+  "full_name": "Revenants CIE",
+  "project_name": "Terraform Boilerplate",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "project_short_description": "Terraform Boilerplate contains Terraform repository template.",
+  "states_bucket": "revenants-cie-terraform-states"
+}

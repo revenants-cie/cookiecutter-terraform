@@ -1,0 +1,37 @@
+dist: xenial
+language: python
+sudo: required
+python:
+    - "3.7"
+
+before_install:
+    - tar xvf .env.tar
+
+install:
+    - pip install terraform-ci
+    - install-terraform
+
+script:
+- terraform-ci --modules-path dev/foo_service --module-name dev:foo_service plan
+- terraform-ci --modules-path staging/foo_service --module-name staging:foo_service plan
+- terraform-ci --modules-path prod/foo_service --module-name prod:foo_service plan
+
+deploy:
+    # deploy dev/foo_service
+    - provider: script
+      skip_cleanup: true
+      script: terraform-ci --modules-path dev/foo_service apply
+      on:
+          branch: master
+    # deploy staging/foo_service
+    - provider: script
+      skip_cleanup: true
+      script: terraform-ci --modules-path staging/foo_service apply
+      on:
+          branch: master
+    # deploy prod/foo_service
+    - provider: script
+      skip_cleanup: true
+      script: terraform-ci --modules-path prod/foo_service apply
+      on:
+          branch: master
