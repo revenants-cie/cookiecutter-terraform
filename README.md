@@ -1,0 +1,1 @@
+# cookiecutter-terraform initial revision
