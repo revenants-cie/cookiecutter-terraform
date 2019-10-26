@@ -27,4 +27,13 @@ variable "pagerduty_token" {
 * Run `make update-secrets` from the repository's root folder. It will ask you to confirm your work multiple times.
 * Make sure the tar file generated is added to the repository `git add .env.tar.enc`
 * Confirm that travis.yml have the latest openssl config
+* Make sure, that you add the amazon access keys to the tf_env.json
 
+```json
+{
+  "TF_VAR_aws_access_key_id": "AK******************",
+  "TF_VAR_aws_secret_access_key": "M*********************Z",
+}
+```
+
+* Get the right key from the amazon secrest store, currently in the root of us-east-1/
