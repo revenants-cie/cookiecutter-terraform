@@ -8,10 +8,13 @@ before_install:
     - tar xvf .env.tar
 
 install:
-    - pip install terraform-ci
-    - install-terraform
+- pip install terraform-ci
+- install-terraform
+- sudo apt-get update
+- sudo apt-get install -y awscli jq
 
 script:
+- make bootstrap test
 - terraform-ci --modules-path dev/foo_service --module-name dev:foo_service plan
 - terraform-ci --modules-path staging/foo_service --module-name staging:foo_service plan
 - terraform-ci --modules-path prod/foo_service --module-name prod:foo_service plan

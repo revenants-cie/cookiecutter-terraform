@@ -26,3 +26,25 @@ install-hooks:  ## Install repo hooks
 	@test -d .git/hooks || (echo "Looks like you are not in a Git repo" ; exit 1)
 	@test -L .git/hooks/pre-commit || ln -fs ../../hooks/pre-commit .git/hooks/pre-commit
 	@chmod +x .git/hooks/pre-commit
+
+.PHONY: test
+test:  ## Run tests on the module
+	pytest -xvvs tests/
+
+
+.PHONY: bootstrap
+bootstrap: ## bootstrap the development environment
+	pip install -U "pip ~= 19.1"
+	pip install -U "setuptools ~= 41.0"
+	pip install -r requirements.txt
+
+.PHONY: clean
+clean: ## clean the repo from cruft
+	rm -rf .pytest_cache
+	find . -name '.terraform' -exec rm -fr {} +
+	find . -name '__pycache__' -exec rm -fr {} +
+
+.PHONY: format
+format:  ## Use terraform fmt to format all files in the repo
+	@echo "Formatting terraform files"
+	@bash hooks/pre-commit
