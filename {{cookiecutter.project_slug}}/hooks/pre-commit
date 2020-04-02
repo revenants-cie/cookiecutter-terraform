@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-modified_files=$(find . \( -name "*.tf" -o -name "*.tfvars" \) -print0  | xargs -0 -n 1 terraform fmt)
+modified_files=$(terraform fmt -recursive)
 
 for f in ${modified_files}
 do
