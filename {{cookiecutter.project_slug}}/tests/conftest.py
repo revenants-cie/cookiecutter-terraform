@@ -15,6 +15,7 @@ def asg_client():
     asg = boto3.client("autoscaling", region_name=REGION)
     return asg
 
+
 @pytest.fixture()
 def ec2_client():
     ec2 = boto3.client("ec2", region_name=REGION)

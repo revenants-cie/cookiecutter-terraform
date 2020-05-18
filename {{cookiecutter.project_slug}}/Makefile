@@ -34,8 +34,8 @@ test:  ## Run tests on the module
 
 .PHONY: bootstrap
 bootstrap: ## bootstrap the development environment
-	pip install -U "pip ~= 20.0"
-	pip install -U "setuptools ~= 45.0"
+	pip install -U "pip ~= 20.1"
+	pip install -U "setuptools ~= 46.1"
 	pip install -r requirements.txt
 
 .PHONY: clean
