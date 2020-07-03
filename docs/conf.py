@@ -17,7 +17,7 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'terraform-aws-bastion'
+project = 'cookiecutter-terraform'
 copyright = '2020, Revenants CIE'
 author = 'Revenants CIE'
 
